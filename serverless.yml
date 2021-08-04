@@ -1,0 +1,40 @@
+service: sample
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  stage: develop
+  runtime: nodejs12.x
+  region: ap-southeast-1
+  lambdaHashingVersion: '20201221'
+
+plugins:
+  - serverless-offline
+  - serverless-s3-local
+
+custom:
+  s3:
+    host: localhost
+    directory: /tmp
+
+resources:
+  Resources:
+    NewResource:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: local-bucket
+
+functions:
+  import-csv-to-s3:
+    handler: handler.importCsvToS3
+    events:
+      - http:
+          path: /import-csv-to-s3
+          method: POST
+  import-s3-to-db:
+    handler: handler.importS3ToDb
+    events:
+      - http:
+          path: /import-s3-to-db
+          method: POST

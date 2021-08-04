@@ -1,0 +1,17 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.959.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "s3rver": "^3.7.0",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^8.0.0",
+    "serverless-s3-local": "^0.6.19"
+  }
+}
